@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration Form</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Configuration Form</h1>
+
+    <form id="configForm">
+        <div class="form-group">
+            <label for="openapi_key">OpenAPI Key:</label>
+            <input type="text" id="openapi_key" name="openapi_key" required>
+        </div>
+
+        <div class="form-group">
+            <label for="default_model">Default Model:</label>
+            <input type="text" id="default_model" name="default_model" required>
+        </div>
+
+        <div class="form-group">
+            <label for="default_system_prompt">Default System Prompt:</label>
+            <input type="text" id="default_system_prompt" name="default_system_prompt" required>
+        </div>
+
+        <div class="form-group">
+            <label for="openapi_url">OpenAPI URL:</label>
+            <input type="text" id="openapi_url" name="openapi_url" required>
+        </div>
+
+        <button type="submit">Save Configuration</button>
+    </form>
+
+    <script>
+        document.getElementById("configForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get the values from the input fields
+            const openapi_key = document.getElementById("openapi_key").value;
+            const default_model = document.getElementById("default_model").value;
+            const default_system_prompt = document.getElementById("default_system_prompt").value;
+            const openapi_url = document.getElementById("openapi_url").value;
+
+            // Construct the JSON object
+            const config = {
+                "openapi_key": openapi_key,
+                "default_model": default_model,
+                "default_system_prompt": default_system_prompt,
+                "openapi_url": openapi_url
+            };
+
+            // Save the configuration to localStorage
+            const configString = JSON.stringify(config);
+            localStorage.setItem("appConfig", configString);
+
+            // Redirect to the home page
+            window.location.href = "/";
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            const configString = localStorage.getItem("appConfig"); // Assuming you're storing it under "appConfig" key.  Adjust if needed.
+
+            if (!configString) {
+                return;
+            }
+            const parsedConfig = JSON.parse(configString);
+            document.getElementById("openapi_key").value = parsedConfig.openapi_key
+            document.getElementById("default_model").value = parsedConfig.default_model
+            document.getElementById("default_system_prompt").value = 
+                parsedConfig.default_system_prompt === "" ? "You are a helpful assistant." : parsedConfig.default_system_prompt
+            document.getElementById("openapi_url").value = parsedConfig.openapi_url
+        });
+
+    </script>
+
+</body>
+
+</html>

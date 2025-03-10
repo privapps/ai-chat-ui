@@ -1,5 +1,5 @@
-import env from './local.env.json';
+import { config } from './appconfig';
 
-export const OPENAI_API_KEY = (env as any).openapi_key;
-export const OPENAI_DEFAULT_MODEL: string = (env as any).default_model;
-export const OPENAI_DEFAULT_SYSTEM_PROMPT: string = (env as any).default_system_prompt;
+export const OPENAI_API_KEY = config?.openapi_key
+export const OPENAI_DEFAULT_MODEL: string = config?.default_model || 'gpt-4o-mini'
+export const OPENAI_DEFAULT_SYSTEM_PROMPT: string = config?.default_system_prompt || 'You are a helpful assistant.'

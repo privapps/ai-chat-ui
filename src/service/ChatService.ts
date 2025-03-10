@@ -317,9 +317,10 @@ export class ChatService {
           const models: OpenAIModel[] = data.data;
           // Filter, enrich with contextWindow from the imported constant, and sort
           return models
-              .filter(model => model.id.startsWith("gpt-"))
+              // .filter(model => model.id.startsWith("gpt-"))
               .map(model => {
-                const details = modelDetails[model.id] || {
+                const mid = model.id.startsWith("models/") ? model.id.substring(6) : model.id; // google models work arounds
+                const details = modelDetails[mid] || {
                   contextWindowSize: 0,
                   knowledgeCutoffDate: '',
                   imageSupport: false,
