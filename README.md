@@ -1,6 +1,6 @@
 # OpenAI Chat UI
 <!-- markdown-link-check-disable -->
-This project provides a web frontend for the OpenAI API and compatible alternatives. See [ORIGINAL README](README.md)
+This project provides a web frontend for the OpenAI API and compatible alternatives. See [ORIGINAL README](README_old.md)
 
 ### Purpose
 

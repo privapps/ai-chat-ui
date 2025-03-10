@@ -6,6 +6,7 @@ import svgrPlugin from 'vite-plugin-svgr';
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react(), viteTsconfigPaths(), svgrPlugin()],
+    base: "/ai-chat-ui",
     server: {
         open: true,
         port: 3000,
