@@ -1,44 +1,24 @@
-# OpenAI React Chat Web Application
+# OpenAI Chat UI
 <!-- markdown-link-check-disable -->
-This project provides a web frontend for the OpenAI chat API. This project is for developers or advanced users that are familiar with [OpenAI ChatGPT](https://chat.openai.com/) but want to customize the web interface.
-## Goals
-* Provide the same features as [OpenAI ChatGPT](https://chat.openai.com/) and <!-- markdown-link-check-enable -->
-[OpenAI Playground](https://platform.openai.com/playground?mode=chat).
-* Use a modern web stack of React, Tailwind CSS, and Typescript.
+This project provides a web frontend for the OpenAI API and compatible alternatives. See [ORIGINAL README](README.md)
 
-See [FEATURES.md](FEATURES.md) for details.
+### Purpose
 
-## Preview
+The original project was tightly coupled with OpenAI. Given the increasing number of backends offering compatible APIs, such as Google Gemni, Deekseek, Qwen, Ollama, llamacpp and etc. this project aims to provide a more flexible solution.
 
-![openai-react-chat-0812-demo](https://github.com/user-attachments/assets/4140d46c-cff2-481b-b606-d2ce869209f3)
+Furthermore, because the backend web server contains minimal logic, we can store configurations (such as API keys and model settings) in the browser's local storage. This eliminates the need for a server-side component, enabling cost-effective deployment via platforms like GitHub Pages.
 
+### How to use
+Configure the application using GitHub Pages: https://privapps.github.io/ai-chat-ui/conf.html
 
-
-
-
-## Requirements
-
-* [Node.JS](https://nodejs.dev/en/)
-* [npm](https://www.npmjs.com/)
-* [OpenAI API Account](https://openai.com/blog/openai-api)
-  * Note: GPT-4 API access is currently accessible to those who have made at least [one successful payment](https://help.openai.com/en/articles/7102672-how-can-i-access-gpt-4) through the OpenAI developer platform.
-
-
-## Setup
-
-1. Clone the repository.
+Sample of Gemini
+```json
+{
+  "openapi_key": "...",
+  "default_model": "models/gemini-2.0-flash-lite",
+  "default_system_prompt": "You are a helpful assistant.",
+  "openapi_url": "https://generativelanguage.googleapis.com/v1beta/openai"
+}
 ```
-git clone https://github.com/elebitzero/openai-react-chat.git
-```
-2. Copy [env.json](src/env.json)  to `local.env.json` and change 'your-api-key-here' to your [OpenAI Key](https://platform.openai.com/account/api-keys)
-3. Build & Run the web server
-```
-npm install
-npm run start
-```
-<!-- markdown-link-check-disable-next-line -->
-The local website [http://localhost:3000/](http://localhost:3000/) should open in your browser.
 
-## Contributions
-
-All contributions are welcome. Feel free to open an issue or create a pull request.
+These values will be stored in your browser's local storage, completing the setup process.

@@ -59,7 +59,7 @@
 
         <div class="form-group">
             <label for="default_system_prompt">Default System Prompt:</label>
-            <input type="text" id="default_system_prompt" name="default_system_prompt" required>
+            <input type="text" id="default_system_prompt" name="default_system_prompt" value="You are a helpful assistant." required>
         </div>
 
         <div class="form-group">
@@ -93,7 +93,7 @@
             localStorage.setItem("appConfig", configString);
 
             // Redirect to the home page
-            window.location.href = "/";
+            window.location.href = "/ai-chat-ui/";
         });
         document.addEventListener("DOMContentLoaded", function () {
             const configString = localStorage.getItem("appConfig"); // Assuming you're storing it under "appConfig" key.  Adjust if needed.
@@ -110,6 +110,7 @@
         });
 
     </script>
+    <p>You can use any OpenAI API compatible Info. Such as Ollma, llama.cpp, Google Gemeni, DeepSeek and etc.</p>
 
 </body>
 

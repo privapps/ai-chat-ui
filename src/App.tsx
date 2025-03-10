@@ -31,7 +31,7 @@ const App = () => {
       />
   );
   return (
-      <BrowserRouter>
+      <BrowserRouter basename='ai-chat-ui'>
         <I18nextProvider i18n={i18n}>
           <div className="App dark:bg-gray-900 dark:text-gray-100">
             <ToastContainer/>
